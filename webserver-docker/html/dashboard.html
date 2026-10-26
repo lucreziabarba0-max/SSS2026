@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f7; text-align: center; padding: 80px 20px; }
+        .card { max-width: 550px; margin: auto; padding: 35px; background: white; border-radius: 16px; box-shadow: 0 5px 20px #0001; }
+        h1 { color: #087e8b; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 id="saluto"></h1>
+        <p id="ora"></p>
+        <a href="#" onclick="sessionStorage.clear(); location.href='login.html'">Esci</a>
+    </div>
+    <script>
+        const u = sessionStorage.getItem("utente");
+        if (!u) { window.location.href = "login.html"; }
+        document.getElementById("saluto").textContent = "Benvenuto, " + u + "!";
+        setInterval(() => {
+            document.getElementById("ora").textContent = "Ora: " + new Date().toLocaleTimeString("it-IT");
+        }, 1000);
+    </script>
+</body>
+</html>
