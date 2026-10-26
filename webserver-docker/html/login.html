@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f7; text-align: center; padding: 80px 20px; }
+        .card { max-width: 550px; margin: auto; padding: 35px; background: white; border-radius: 16px; box-shadow: 0 5px 20px #0001; }
+        h1 { color: #087e8b; }
+        input { display: block; width: 80%; margin: 12px auto; padding: 10px; font-size: 16px; }
+        button { padding: 10px 30px; font-size: 16px; background: #087e8b; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        #errore { color: crimson; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Login</h1>
+        <input type="text" id="utente" placeholder="Utente">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Accedi</button>
+        <p id="errore"></p>
+    </div>
+    <script>
+        function login() {
+            const u = document.getElementById("utente").value;
+            const p = document.getElementById("password").value;
+            if (u === "admin" && p === "docker123") {
+                sessionStorage.setItem("utente", u);
+                window.location.href = "dashboard.html";
+            } else {
+                document.getElementById("errore").textContent = "Credenziali errate";
+            }
+        }
+    </script>
+</body>
+</html>
