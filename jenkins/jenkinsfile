@@ -1,0 +1,25 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Clonazione repository') {
+            steps {
+                git branch: 'main',
+                    url: 'INSERISCI_QUI_URL_GITHUB'
+            }
+        }
+
+        stage('Build Backend') {
+            steps {
+                sh 'docker build -t somebanking-backend:latest ./backend'
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                sh 'docker build -t somebanking-frontend:latest ./frontend'
+            }
+        }
+    }
+}
